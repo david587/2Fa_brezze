@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\authController;
+use App\Http\Controllers\companyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,13 +14,24 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//todo:
+///list route to visualize in table
+//list companies
+//test auth
+//protect routes
+//detailed list with passed id
+//add in /list
+//edit-update,dlete in companyblade
+//mobil responsivity
+//2fa login
 
 Route::get('/', function () {
     return view('auth.login');
-});
+})->name("login");
 
-Route::post("/authenticate",[UserController::class,"authenticate"]);
+Route::post("/authenticate",[authController::class,"authenticate"]);
 
 Route::middleware(['auth'])->group(function () {
-    
+    Route::post("/logout",[AuthController::class,"logout"])->name("logout");
+    Route::get("/list",[companyController::class,"listCompanies"]);
 });

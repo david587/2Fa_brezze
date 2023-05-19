@@ -16,7 +16,7 @@ class authController extends Controller
 
         if(auth()->attempt($formfields)){ 
             $request->session()->regenerate(); 
-        return redirect("/list")->with("message","You are now logged in"); 
+        return redirect("/list")->with("message","You are logged in"); 
         } 
 
         return back()->withErrors(["email"=>"Invalid Credentials"])->onlyInput("email"); 
