@@ -1,7 +1,7 @@
 @extends("main")
 
 @section("content")
-<div class="container">
+<div class="container mt-5">
     <h1>Edit Company</h1>
     <form action="{{ route('company.update', ['id' => $company->id]) }}" method="POST">
         @csrf
@@ -27,7 +27,7 @@
             <input type="email" class="form-control" id="email" name="email" value="{{ $company->email }}">
         </div>
 
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-dark">Update</button>
     </form>
 </div>
 @endsection

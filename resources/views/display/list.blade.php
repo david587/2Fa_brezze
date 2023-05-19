@@ -12,7 +12,9 @@
         <div class="container">
             <p class="text-center fs-3"><span class="fs-1 m-3">Hi!</span> {{ auth()->user()->name }}</p>
         </div>
-        <button type="button" class="btn btn-dark">Add company</button>
+        <a href="/create">
+          <button type="button" class="btn btn-dark">Add company</button>
+        </a>
         <div class="mt-2">
             <table class="table table-striped">
                 <thead>

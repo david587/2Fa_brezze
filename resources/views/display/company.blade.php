@@ -14,7 +14,7 @@
                 <strong>Email:</strong> {{ $company->email }} <br>
             </p>
             <div class="d-flex justify-content-start mb-3">
-                <a href="{{ route('company.edit', ['id' => $company->id]) }}" class="btn btn-primary me-2">Edit</a>
+                <a href="{{ route('company.edit', ['id' => $company->id]) }}" class="btn btn-dark me-2">Edit</a>
                 <form action="{{ route('company.destroy', ['id' => $company->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')

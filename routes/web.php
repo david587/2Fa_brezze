@@ -14,15 +14,7 @@ use App\Http\Controllers\companyController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//todo:
-///list route to visualize in table
-//list companies
-//test auth
-//protect routes
-//detailed list with passed id
-//add in /list
-//edit-update,dlete in companyblade
-//mobil responsivity
+
 //2fa login
 
 Route::get('/', function () {
@@ -34,6 +26,8 @@ Route::post("/authenticate",[authController::class,"authenticate"]);
 Route::middleware(['auth'])->group(function () {
     Route::post("/logout",[AuthController::class,"logout"])->name("logout");
     Route::get("/list",[companyController::class,"listCompanies"])->name("list");
+    Route::get("/create",[companyController::class,"showCreate"]);
+    Route::post("/create",[companyController::class,"createCompany"])->name("company.create");
     Route::get("/show/{id}",[companyController::class,"showCompany"])->name("company.showCompany");
     Route::get("/edit/{id}",[companyController::class,"editCompany"])->name("company.edit");
     Route::put("/update/{id}",[companyController::class,"updateCompany"])->name("company.update");
