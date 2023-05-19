@@ -1,31 +1,41 @@
 @extends("main")
 
 @section("content")
+<div class="">
     <div class="container mt-5">
-        @if (session('success'))   
+        @if (session('success'))
         <div class="alert alert-success" role="alert">
             <span class="">{{ session('success') }}</span>
         </div>
         @endif
     </div>
-
-    <button type="button" class="btn btn-primary">Add company</button>
-    <div class="mt-2">
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">taxNumber</th>
-              </tr>
-            </thead>
-            <tbody>
-                @foreach($companies as $company)
-              <tr>
-                <td>{{ $company->name }}</td>
-                <td>{{ $company->taxNumber }}</td>
-              </tr>
-                @endforeach
-            </tbody>
-          </table>
-    </div>
+        <div class="container">
+            <p class="text-center fs-3"><span class="fs-1 m-3">Hi!</span> {{ auth()->user()->name }}</p>
+        </div>
+        <button type="button" class="btn btn-dark">Add company</button>
+        <div class="mt-2">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">taxNumber</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach($companies as $company)
+                  <tr >
+                    <td>{{ $company->name }}</td>
+                    <td>{{ $company->taxNumber }}</td>
+                    <td>
+                        <a href="{{ route('company.showCompany', ['id' => $company->id]) }}">
+                            <button type="button" class="btn btn-warning">Details</button>
+                        </a>
+                    </td>
+                    
+                  </tr>
+                    @endforeach
+                </tbody>
+              </table>
+        </div>
+</div>
 @endsection

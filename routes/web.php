@@ -33,5 +33,10 @@ Route::post("/authenticate",[authController::class,"authenticate"]);
 
 Route::middleware(['auth'])->group(function () {
     Route::post("/logout",[AuthController::class,"logout"])->name("logout");
-    Route::get("/list",[companyController::class,"listCompanies"]);
+    Route::get("/list",[companyController::class,"listCompanies"])->name("list");
+    Route::get("/show/{id}",[companyController::class,"showCompany"])->name("company.showCompany");
+    Route::get("/edit/{id}",[companyController::class,"editCompany"])->name("company.edit");
+    Route::put("/update/{id}",[companyController::class,"updateCompany"])->name("company.update");
+    Route::delete("/destroy/{id}",[companyController::class,"destroyCompany"])->name("company.destroy");
+
 });

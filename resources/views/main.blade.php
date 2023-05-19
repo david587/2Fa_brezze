@@ -9,9 +9,11 @@
     <title>Felvételi</title>
 </head>
 <body>
-    <x-navbar></x-navbar>
-    <div class="container">
-        @yield('content')
+    <div class=".bg-dark-subtle">
+        <x-navbar></x-navbar>
+        <div class="container">
+            @yield('content')
+        </div>
     </div>
 </body>
 </html>
