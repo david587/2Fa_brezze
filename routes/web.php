@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
+});
+
+Route::post("/authenticate",[UserController::class,"authenticate"]);
+
+Route::middleware(['auth'])->group(function () {
+    
 });
