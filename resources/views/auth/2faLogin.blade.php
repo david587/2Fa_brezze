@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="container mt-5">
-    <h1>Two Factory Authentication</h1>
+    <h1>Two Factor Authentication</h1>
     <form action="/login" method="POST">
         @csrf
         <div class="mb-3 mt-5">
