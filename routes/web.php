@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('auth.login');
 })->name("login");
 
-Route::get('/login', function () {
+Route::get('/2faLogin', function () {
     return view('auth.2faLogin');
 });
 
@@ -35,7 +35,7 @@ Route::get('2fa/reset', [App\Http\Controllers\TwoFAController::class, 'resend'])
 
 Route::middleware(['auth'])->group(function () {
     Route::post("/logout",[AuthController::class,"logout"])->name("logout");
-    Route::get("/list",[companyController::class,"listCompanies"])->name("list")->middleware('2fa');
+    Route::get("/list",[companyController::class,"listCompanies"])->name("list");
     Route::get("/create",[companyController::class,"showCreate"]);
     Route::post("/create",[companyController::class,"createCompany"])->name("company.create");
     Route::get("/show/{id}",[companyController::class,"showCompany"])->name("company.showCompany");

@@ -7,7 +7,7 @@
           </form>
       @else
           <p class="text-light text fs-5">Please login with your credentials <span class="text-warning">:)</span> </p>
-          <a href="/login">
+          <a href="/2faLogin">
             <button type="submit" class="btn btn-light">Try 2Fa</button>
           </a>
       @endauth
