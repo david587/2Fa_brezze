@@ -2,9 +2,8 @@
 
 @section("content")
     <div class="container mt-5">
-    <h1>Welcome!</h1>
-    <p>To get a random user run: php artisan init:randomuser</p>
-    <form action="/authenticate" method="POST">
+    <h1>Two Factory Authentication</h1>
+    <form action="/login" method="POST">
         @csrf
         <div class="mb-3 mt-5">
           <label for="exampleInputEmail1" class="form-label">Email address</label>
