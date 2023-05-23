@@ -9,22 +9,22 @@
 
         <div class="mb-3">
             <label for="name" class="form-label">Company Name</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ $company->name }}">
+            <input type="text" class="form-control" id="name" name="name" value="{{ $company->name }}" required>
         </div>
 
         <div class="mb-3">
             <label for="taxNumber" class="form-label">Tax Number</label>
-            <input type="text" class="form-control" id="taxNumber" name="taxNumber" value="{{ $company->taxNumber }}">
+            <input type="text" class="form-control" id="taxNumber" name="taxNumber" value="{{ $company->taxNumber }}" required>
         </div>
 
         <div class="mb-3">
             <label for="phone" class="form-label">Phone</label>
-            <input type="text" class="form-control" id="phone" name="phone" value="{{ $company->phone }}">
+            <input type="text" class="form-control" id="phone" name="phone" value="{{ $company->phone }}" required>
         </div>
 
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ $company->email }}">
+            <input type="email" class="form-control" id="email" name="email" value="{{ $company->email }}" required>
         </div>
 
         <button type="submit" class="btn btn-dark">Update</button>

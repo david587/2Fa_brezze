@@ -15,6 +15,7 @@ use App\Http\Controllers\companyController;
 |
 */
 
+
 Route::get('/', function () {
     return view('auth.login');
 })->name("login");

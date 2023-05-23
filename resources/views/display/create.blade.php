@@ -7,7 +7,7 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Company Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="kl System">
+            <input type="text" class="form-control" id="name" name="name" placeholder="kl System" required>
         </div>
         @error("name") 
         <div class="alert alert-danger mt-3 mb-3" role="alert">
@@ -17,7 +17,7 @@
 
         <div class="mb-3">
             <label for="taxNumber" class="form-label">Tax Number</label>
-            <input type="number" class="form-control" id="taxNumber" name="taxNumber" placeholder="989899871">
+            <input type="number" class="form-control" id="taxNumber" name="taxNumber" placeholder="989899871" required>
         </div>
         @error("taxNumber") 
         <div class="alert alert-danger mt-3 mb-3" role="alert">
@@ -27,7 +27,7 @@
 
         <div class="mb-3">
             <label for="phone" class="form-label">Phone</label>
-            <input type="text" class="form-control" id="phone" name="phone" placeholder="06308345693">
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="06308345693" required>
         </div>
         @error("phone") 
         <div class="alert alert-danger mt-3 mb-3" role="alert">
@@ -37,7 +37,7 @@
 
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="example@gmail.com">
+            <input type="text" class="form-control" id="email" name="email" placeholder="example@gmail.com" required>
         </div>
         @error("email") 
         <div class="alert alert-danger mt-3 mb-3" role="alert">
