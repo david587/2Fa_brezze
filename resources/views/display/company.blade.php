@@ -15,15 +15,34 @@
             </p>
             <div class="d-flex justify-content-start mb-3">
                 <a href="{{ route('company.edit', ['id' => $company->id]) }}" class="btn btn-dark me-2">Edit</a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Delete</button>
+            </div>
+            <a href="/list" class="icon-link icon-link-hover link-success link-underline-success link-underline-opacity-25">
+                Back to previous page
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this company?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <form action="{{ route('company.destroy', ['id' => $company->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>
-            <a href="/list" class="icon-link icon-link-hover link-success link-underline-success link-underline-opacity-25">
-                Back to previous page
-            </a>
         </div>
     </div>
 </div>
