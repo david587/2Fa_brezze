@@ -44,7 +44,7 @@ class SendCodeMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Mail from david')
+        return $this->subject('Submission code ')
                     ->view('emails.code');
     }
 
