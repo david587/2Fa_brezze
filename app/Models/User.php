@@ -48,17 +48,28 @@ class User extends Authenticatable
 
     public function generateCode()
     {
-        $code = rand(1000, 9999);
-  
-        UserCode::updateOrCreate(
-            [ 'user_id' => auth()->user()->id ],
-            [ 'code' => $code ]
-        );
-    
+        $uniqueCode = false;
+        $code = null;
+
+    while (!$uniqueCode) {
+        $code = rand(100000, 999999);
+
+        $existingCode = UserCode::where('code', $code)->exists();
+
+        if (!$existingCode) {
+            $uniqueCode = true;
+        }
+    }
+
+    UserCode::updateOrCreate(
+        ['user_id' => auth()->user()->id],
+        ['code' => $code]
+    );
+
         try {
   
             $details = [
-                'title' => 'Mail from david',
+                'title' => 'Submission code',
                 'code' => $code
             ];
              
