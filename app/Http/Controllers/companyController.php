@@ -32,11 +32,27 @@ class companyController extends Controller
 
     public function updateCompany(REQUEST $request,$id)
     {
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string|max:255',
+            'taxNumber' => 'required|max:50|min:5',
+            'phone' => 'required|min:10',
+            'email' => 'required|email',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $validatedData = $validator->validated();
+
         $company = company::findOrFail($id);
-        $company->name = $request->input('name');
-        $company->taxNumber = $request->input('taxNumber');
-        $company->phone = $request->input('phone');
-        $company->email = $request->input('email');
+        $company->name = $validatedData["name"];
+        $company->taxNumber = $validatedData["taxNumber"];
+        $company->phone = $validatedData["phone"];
+        $company->email = $validatedData["email"];
         $company->save();
         return redirect()->route('list')->with('success', 'Product updated successfully!');
     }
@@ -53,7 +69,7 @@ class companyController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'taxNumber' => 'required|max:50|min:5',
-            'phone' => 'required|min:0',
+            'phone' => 'required|min:10',
             'email' => 'required|email',
         ]);
 
