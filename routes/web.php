@@ -39,9 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/list",[companyController::class,"listCompanies"])->name("list");
     Route::get("/create",[companyController::class,"showCreate"]);
     Route::post("/create",[companyController::class,"createCompany"])->name("company.create");
-    Route::get("/show/{id}",[companyController::class,"showCompany"])->name("company.showCompany");
-    Route::get("/edit/{id}",[companyController::class,"editCompany"])->name("company.edit");
-    Route::put("/update/{id}",[companyController::class,"updateCompany"])->name("company.update");
-    Route::delete("/destroy/{id}",[companyController::class,"destroyCompany"])->name("company.destroy");
-
+    Route::get("/show/{company}", [CompanyController::class, "showCompany"])->name("company.showCompany");
+    Route::get("/edit/{company}", [CompanyController::class, "editCompany"])->name("company.edit");
+    Route::put("/update/{company}", [CompanyController::class, "updateCompany"])->name("company.update");
+    Route::delete("/destroy/{company}", [CompanyController::class, "destroyCompany"])->name("company.destroy");
 });

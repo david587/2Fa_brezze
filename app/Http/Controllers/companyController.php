@@ -14,25 +14,24 @@ class companyController extends Controller
         return view("display.list", ["companies" => $companies]);
     }
 
-    public function showCreate(){
+    public function showCreate()
+    {
         return view("display.create");
     }
 
-    public function showCompany($id)
+    public function showCompany(Company $company)
     {
-        $company = company::find($id);
         return view("display.company", ["company" => $company]);
-    }
-    
-    public function editCompany($id)
+    }   
+
+    public function editCompany(Company $company)
     {
-        $editable = company::find($id);
-        return view("display.edit", ["company" => $editable]);
+        return view("display.edit", ["company" => $company]);
     }
 
-    public function updateCompany(REQUEST $request,$id)
+    public function updateCompany(Request $request, Company $company)
     {
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'taxNumber' => 'required|max:50|min:5',
             'phone' => 'required|min:10',
@@ -48,21 +47,22 @@ class companyController extends Controller
 
         $validatedData = $validator->validated();
 
-        $company = company::findOrFail($id);
         $company->name = $validatedData["name"];
         $company->taxNumber = $validatedData["taxNumber"];
         $company->phone = $validatedData["phone"];
         $company->email = $validatedData["email"];
         $company->save();
+
         return redirect()->route('list')->with('success', 'Product updated successfully!');
     }
 
-    public function destroyCompany($id)
+    public function destroyCompany(Company $company)
     {
-        company::destroy($id);
-        return redirect()->route('list')->with('success', 'Product Deleted successfully!');
+        $company->delete();
 
+        return redirect()->route('list')->with('success', 'Product Deleted successfully!');
     }
+
 
     public function createCompany(REQUEST $request)
     {

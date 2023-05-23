@@ -29,9 +29,10 @@
                     <td>{{ $company->name }}</td>
                     <td>{{ $company->taxNumber }}</td>
                     <td>
-                        <a href="{{ route('company.showCompany', ['id' => $company->id]) }}">
-                            <button type="button" class="btn btn-warning">Details</button>
-                        </a>
+                      <a href="{{ route('company.showCompany', ['company' => $company]) }}">
+                        <button type="button" class="btn btn-warning">Details</button>
+                    </a>
+                    
                     </td>
                     
                   </tr>
