@@ -65,7 +65,7 @@ class companyController extends Controller
             $company->email = $validatedData["email"];
             $company->save();
     
-            return redirect()->route('list')->with('success', 'Product updated successfully!');
+            return redirect()->route('list')->with('success', 'Company updated successfully!');
         } 
         catch (ModelNotFoundException $e){
             return abort(404);
@@ -79,7 +79,7 @@ class companyController extends Controller
         try{
             $company->delete();
 
-            return redirect()->route('list')->with('success', 'Product Deleted successfully!');
+            return redirect()->route('list')->with('success', 'Company Deleted successfully!');
         }
         catch (ModelNotFoundException $e){
             return abort(404);
@@ -114,6 +114,6 @@ class companyController extends Controller
         $company->email = $validatedData["email"];
         $company->save();
     
-        return redirect()->route('list')->with('success', 'Product created successfully.');
+        return redirect()->route('list')->with('success', 'Company created successfully.');
     }
 }

@@ -2,12 +2,12 @@
 
 @section("content")
 <div class="container mt-5">
-    <h1>Create Product</h1>
+    <h1>Create Company</h1>
     <form action="{{ route('company.create') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Company Name</label>
-            <input value="{{ old('name') }}" type="text" class="form-control" id="name" name="name" placeholder="kl System" required>
+            <input value="{{ old('name') }}" type="text" class="form-control" id="name" name="name" placeholder="Your company" required>
         </div>
         @error("name") 
         <div class="alert alert-danger mt-3 mb-3" role="alert">
