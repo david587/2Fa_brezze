@@ -17,7 +17,7 @@
                 <a href="{{ route('company.edit', ['company' => $company]) }}" class="btn btn-dark me-2">Edit</a>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Delete</button>
             </div>
-            <a href="/list" class="icon-link icon-link-hover link-success link-underline-success link-underline-opacity-25">
+            <a href="{{ route('list') }}" class="icon-link icon-link-hover link-success link-underline-success link-underline-opacity-25">
                 Back to previous page
             </a>
         </div>

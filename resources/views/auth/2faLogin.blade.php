@@ -3,7 +3,7 @@
 @section("content")
     <div class="container mt-5">
     <h1>Two Factor Authentication</h1>
-    <form action="/login" method="POST">
+    <form action="{{ route("2fa.login") }}" method="POST">
         @csrf
         <div class="mb-3 mt-5">
           <label for="exampleInputEmail1" class="form-label">Email address</label>
