@@ -1,3 +1,4 @@
+<<<<<<< README.md
 ## Inditás
 #### composer install
 #### npm install
@@ -9,3 +10,4 @@
 #### php artisan serve
 #### npm run dev
 #### Two Factor authentication-> navbar lenyitása: try 2fa gomb
+
