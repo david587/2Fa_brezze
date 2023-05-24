@@ -36,7 +36,7 @@ Route::get('2fa/reset', [App\Http\Controllers\TwoFAController::class, 'resend'])
 //normal login
 Route::post("/authenticate",[authController::class,"authenticate"])->name("authenticate");
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','2fa'])->group(function () {
     Route::post("/logout",[AuthController::class,"logout"])->name("logout");
     Route::get("/list",[companyController::class,"listCompanies"])->name("list");
     Route::get("/create",[companyController::class,"showCreate"])->name('create');

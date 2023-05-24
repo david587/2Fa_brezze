@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class authController extends Controller
 {
@@ -17,6 +17,7 @@ class authController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+            Session::put('normal', auth()->user()->id);
             return redirect()->intended("list")->with("success", "You are logged in");
         }
 
