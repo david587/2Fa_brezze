@@ -1,5 +1,6 @@
 @extends("main")
 
+@section('title', 'Normal login')
 @section("content")
     <div class="container mt-5">
     <h1>Welcome!</h1>

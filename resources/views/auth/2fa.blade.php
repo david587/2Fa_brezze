@@ -1,5 +1,6 @@
 @extends("codeSubmission")
 
+@section('title', '2fa Verification')
 @section("submission")
 <div class="container">
     <div class="row justify-content-center">

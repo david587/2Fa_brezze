@@ -1,5 +1,6 @@
 @extends("main")
 
+@section('title', 'Edit')
 @section("content")
 <div class="container mt-5">
     <h1>Edit Company</h1>

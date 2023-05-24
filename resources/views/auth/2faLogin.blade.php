@@ -1,5 +1,6 @@
 @extends("main")
 
+@section('title', '2fa Login')
 @section("content")
     <div class="container mt-5">
     <h1>Two Factor Authentication</h1>
