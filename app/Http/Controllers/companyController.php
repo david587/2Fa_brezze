@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class companyController extends Controller
 {
@@ -20,81 +19,56 @@ class companyController extends Controller
         return view("display.create");
     }
 
-    public function showCompany(Company $company)
+    public function showCompany(company $company)
     {
-        try {
-            return view("display.company", ["company" => $company]);
-        } 
-        catch (ModelNotFoundException $e) {
-            abort(404);
-        }
+        return view("display.company", ["company" => $company]);
     }
 
-    public function editCompany(Company $company)
+    public function editCompany(company $company)
     {
-        try {
-            return view("display.edit", ["company" => $company]);
-        } 
-        catch (ModelNotFoundException $e) {
-            abort(404);
-        }
+        return view("display.edit", ["company" => $company]);
     }
 
-    public function updateCompany(Request $request, Company $company)
-    {
-        try{
-            $validator = Validator::make($request->all(), [
-                'name' => 'required|string|max:255',
-                'taxNumber' => 'required|max:50|min:5',
-                'phone' => 'required|min:10',
-                'email' => 'required|email',
-            ]);
-    
-            if ($validator->fails()) {
-                return redirect()
-                    ->back()
-                    ->withErrors($validator)
-                    ->withInput();
-            }
-    
-            $validatedData = $validator->validated();
-    
-            $company->name = $validatedData["name"];
-            $company->taxNumber = $validatedData["taxNumber"];
-            $company->phone = $validatedData["phone"];
-            $company->email = $validatedData["email"];
-            $company->save();
-    
-            return redirect()->route('list')->with('success', 'Company updated successfully!');
-        } 
-        catch (ModelNotFoundException $e){
-            return abort(404);
-        }
-        
-        
-    }
-
-    public function destroyCompany(Company $company)
-    {
-        try{
-            $company->delete();
-
-            return redirect()->route('list')->with('success', 'Company Deleted successfully!');
-        }
-        catch (ModelNotFoundException $e){
-            return abort(404);
-        }
-        
-       
-    }
-
-
-    public function createCompany(REQUEST $request)
+    public function updateCompany(Request $request, company $company)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'taxNumber' => 'required|max:50|min:5',
-            'phone' => 'required|min:10',
+            'taxNumber' => 'required|max:8|min:8',
+            'phone' => 'required|string|min:9|max:15',
+            'email' => 'required|email',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $validatedData = $validator->validated();
+
+        $company->name = $validatedData["name"];
+        $company->taxNumber = $validatedData["taxNumber"];
+        $company->phone = $validatedData["phone"];
+        $company->email = $validatedData["email"];
+        $company->save();
+
+        return redirect()->route('list')->with('success', 'company updated successfully!');
+    }
+
+    public function destroyCompany(company $company)
+    {
+        $company->delete();
+
+        return redirect()->route('list')->with('success', 'company deleted successfully!');
+    }
+
+    public function createCompany(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'taxNumber' => 'required|max:8|min:8',
+            'phone' => 'required|string|min:9|max:15',
             'email' => 'required|email',
         ]);
 
@@ -113,7 +87,7 @@ class companyController extends Controller
         $company->phone = $validatedData["phone"];
         $company->email = $validatedData["email"];
         $company->save();
-    
-        return redirect()->route('list')->with('success', 'Company created successfully.');
+
+        return redirect()->route('list')->with('success', 'company created successfully.');
     }
 }
