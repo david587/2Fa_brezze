@@ -1,7 +1,8 @@
 @extends("codeSubmission")
 
+@section('title', '2FA Verification')
 @section("submission")
-<div class="container">
+<div class="container mt-10">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -11,7 +12,7 @@
                     <form method="POST" action="{{ route('2fa.post') }}">
                         @csrf
   
-                        <p class="text-center">We sent code to email : {{ substr(auth()->user()->email, 0, 5) . '******' . substr(auth()->user()->email,  -2) }}</p>
+                        <p class="text-center">We sent code to email: {{ substr(auth()->user()->email, 0, 5) . '******' . substr(auth()->user()->email,  -2) }}</p>
   
                         @if ($message = Session::get('success'))
                             <div class="row">
@@ -39,7 +40,7 @@
                             <label for="code" class="col-md-4 col-form-label text-md-right">Code</label>
   
                             <div class="col-md-6">
-                                <input id="code" type="number" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" required autocomplete="code" autofocus>
+                                <input id="code" type="number" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('code') }}" required autocomplete="code" autofocus min="0" max="999999">
   
                                 @if($errors->any())
                                 <div class="alert alert-danger mt-3 mb-3" role="alert">
@@ -61,7 +62,7 @@
   
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary bg-primary">
                                     Submit
                                 </button>
   

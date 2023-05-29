@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\authController;
 use App\Http\Controllers\companyController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,29 +15,22 @@ use App\Http\Controllers\companyController;
 |
 */
 
-
 Route::get('/', function () {
-    return view('auth.login');
-})->name("login");
-
-Route::get('/2faLogin', function () {
-    return view('auth.2faLogin');
+    return view('welcome');
 });
 
-
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 //2fa start
-Route::post("/login",[authController::class,"login"])->name("2fa.login");
+// Route::post("/login",[authController::class,"login"])->name("2fa.login");
 Route::get('2fa', [App\Http\Controllers\TwoFAController::class, 'index'])->name('2fa.index');
 Route::post('2fa', [App\Http\Controllers\TwoFAController::class, 'store'])->name('2fa.post');
 Route::get('2fa/reset', [App\Http\Controllers\TwoFAController::class, 'resend'])->name('2fa.resend');
 //2fa end
 
-//normal login
-Route::post("/authenticate",[authController::class,"authenticate"])->name("authenticate");
-
 Route::middleware(['auth','2fa'])->group(function () {
-    Route::post("/logout",[AuthController::class,"logout"])->name("logout");
     Route::get("/list",[companyController::class,"listCompanies"])->name("list");
     Route::get("/create",[companyController::class,"showCreate"])->name('create');
     Route::post("/create",[companyController::class,"createCompany"])->name("company.create");
@@ -45,4 +38,11 @@ Route::middleware(['auth','2fa'])->group(function () {
     Route::get("/edit/{company}", [CompanyController::class, "editCompany"])->name("company.edit");
     Route::put("/update/{company}", [CompanyController::class, "updateCompany"])->name("company.update");
     Route::delete("/destroy/{company}", [CompanyController::class, "destroyCompany"])->name("company.destroy");
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+require __DIR__.'/auth.php';
