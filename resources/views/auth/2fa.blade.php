@@ -6,8 +6,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">2FA Verification</div>
-  
+                <div class="card-header">2FA Verification
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-link">Use normal login instead</button>
+                        </form>
+                </div>
+                
                 <div class="card-body">
                     <form method="POST" action="{{ route('2fa.post') }}">
                         @csrf
