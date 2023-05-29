@@ -3,7 +3,7 @@
 @section('title', 'Create')
 @section("content")
 <div class="container mt-5">
-    <h1>Create Company</h1>
+    <h1 class="text-center">Create Company</h1>
     <form action="{{ route('company.create') }}" method="POST">
         @csrf
         <div class="mb-3">
@@ -46,7 +46,7 @@
         </div>
         @enderror
 
-        <button type="submit" class="btn btn-dark">Create</button>
+        <button type="submit" class="btn btn-dark text-success">Create</button>
     </form>
 </div>
 @endsection

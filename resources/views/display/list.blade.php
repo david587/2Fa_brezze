@@ -2,6 +2,7 @@
 
 @section('title', 'List')
 @section("content")
+
 <div class="">
     <div class="container mt-5">
         @if (session('success'))
@@ -14,7 +15,7 @@
             <p class="text-center fs-3"><span class="fs-1 m-3">Hi!</span> {{ auth()->user()->name }}</p>
         </div>
         <a href="{{ route('create') }}">
-          <button type="button" class="btn btn-dark">Add company</button>
+          <button type="button" class="btn btn-dark text-success">Add company</button>
         </a>
         <div class="mt-2">
             <table class="table table-striped">
@@ -31,7 +32,7 @@
                     <td>{{ $company->taxNumber }}</td>
                     <td>
                       <a href="{{ route('company.showCompany', ['company' => $company]) }}">
-                        <button type="button" class="btn btn-warning">Details</button>
+                        <button type="button" class="btn btn-warning bg-warning">Details</button>
                     </a>
                     
                     </td>

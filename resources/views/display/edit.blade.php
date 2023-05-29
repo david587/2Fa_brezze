@@ -3,7 +3,7 @@
 @section('title', 'Edit')
 @section("content")
 <div class="container mt-5">
-    <h1>Edit Company</h1>
+    <h1 class="text-center">Edit Company</h1>
     <form action="{{ route('company.update', ['company' => $company]) }}" method="POST">
         @csrf
         @method('PUT')
@@ -48,7 +48,7 @@
         </div>
         @enderror
 
-        <button type="submit" class="btn btn-dark text-black">Update</button>
+        <button type="submit" class="btn btn-dark bg-dark text-light">Update</button>
     </form>
 </div>
 @endsection
