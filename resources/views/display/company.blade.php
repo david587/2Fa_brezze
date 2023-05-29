@@ -16,7 +16,7 @@
             </p>
             <div class="d-flex justify-content-start mb-3">
                 <a href="{{ route('company.edit', ['company' => $company]) }}" class="btn btn-dark me-2">Edit</a>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Delete</button>
+                <button type="button" class="btn btn-danger text-black" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Delete</button>
             </div>
             <a href="{{ route('list') }}" class="icon-link icon-link-hover link-success link-underline-success link-underline-opacity-25">
                 Back to previous page
@@ -37,11 +37,11 @@
                 <p>Are you sure you want to delete this company?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary text-black" data-bs-dismiss="modal">Cancel</button>
                 <form action="{{ route('company.destroy', ['company' => $company]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger text-black">Delete</button>
                 </form>                
             </div>
         </div>
