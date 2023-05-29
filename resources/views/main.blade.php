@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class=".bg-dark-subtle">
-        <x-navbar></x-navbar>
+        {{-- <x-navbar></x-navbar> --}}
         <div class="container">
             @yield('content')
         </div>
