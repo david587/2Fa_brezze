@@ -18,7 +18,7 @@
 
         <div class="mb-3">
             <label for="taxNumber" class="form-label">Tax Number</label>
-            <input value="{{ old('taxNumber') }}" type="text" class="form-control" id="taxNumber" name="taxNumber" placeholder="989899871" required pattern="[0-9]{9}" title="Please enter a 9-digit tax number">
+            <input value="{{ old('taxNumber') }}" type="text" class="form-control" id="taxNumber" name="taxNumber" placeholder="989899871" required pattern="[0-9]{8}" title="Please enter a 8-digit tax number">
         </div>
         @error("taxNumber") 
         <div class="alert alert-danger mt-3 mb-3" role="alert">

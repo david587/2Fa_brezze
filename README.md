@@ -8,4 +8,4 @@
 #### php artisan init:randomuser -> random user generálása
 #### php artisan serve
 #### npm run dev
-#### Two Factor authentication-> navbar lenyitása: try 2fa gomb
+#### Two Factor authentication-> navbar 2fa gomb
